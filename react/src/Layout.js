@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import deepEqual from 'deep-equal';
 import Helmet from 'react-helmet';
+import PageFooter from './components/PageFooter';
 
 // Using bootstrap is completely optional. It's used here to provide a clean layout for samples,
 // without needing extra CSS in the sample app. Remove it in package.json as well if it's removed here.
@@ -76,6 +77,8 @@ const Layout = ({ route }) => (
     <div className="container">
       <Placeholder name="jss-main" rendering={route} />
     </div>
+
+    <PageFooter />
   </React.Fragment>
 );
 
