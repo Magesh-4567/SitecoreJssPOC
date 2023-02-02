@@ -1,0 +1,11 @@
+query BreadcrumbQuery($contextItem: String!){
+  contextItem: item(language:"en", path: $contextItem){
+    name
+    ancestors{
+      name
+      url{
+        url
+      }
+    }
+  }
+}
