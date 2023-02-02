@@ -6,11 +6,13 @@ class Breadcrumb extends React.Component {
     super(props);
   }
   render() {
+    const reversed = this.props.fields.data.contextItem.ancestors.reverse();
+    console.log(reversed);
     return (
       <div>
         <Breadcrumb1>
-          {this.props.fields.data.contextItem.ancestors &&
-            this.props.fields.data.contextItem.ancestors.map((item, index) => (
+          {reversed &&
+            reversed.map((item, index) => (
               <Breadcrumb1.Item key={index} href={item.url.url}>
                 {item.name}
               </Breadcrumb1.Item>
