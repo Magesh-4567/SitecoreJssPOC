@@ -406,4 +406,3 @@ E:\SitecoreJssPoc\react\website\Datamatics\Datamatics\obj\Debug\Datamatics.cspro
 E:\SitecoreJssPoc\react\website\Datamatics\Datamatics\obj\Debug\Datamatics.csproj.CopyComplete
 E:\SitecoreJssPoc\react\website\Datamatics\Datamatics\obj\Debug\Datamatics.dll
 E:\SitecoreJssPoc\react\website\Datamatics\Datamatics\obj\Debug\Datamatics.pdb
-E:\SitecoreJssPoc\react\website\Datamatics\Datamatics\obj\Debug\Datamatics.csproj.AssemblyReference.cache

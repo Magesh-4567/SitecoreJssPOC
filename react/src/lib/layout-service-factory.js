@@ -3,6 +3,7 @@ import {
   RestLayoutService,
   constants,
 } from '@sitecore-jss/sitecore-jss-react';
+import { DatamaticsLayoutService } from './datamatics-layout-service';
 import config from '../temp/config';
 
 export class LayoutServiceFactory {
@@ -13,7 +14,7 @@ export class LayoutServiceFactory {
           apiKey: config.sitecoreApiKey,
           siteName: config.jssAppName,
         })
-      : new RestLayoutService({
+      : new DatamaticsLayoutService({
           apiHost: config.sitecoreApiHost,
           apiKey: config.sitecoreApiKey,
           siteName: config.jssAppName,

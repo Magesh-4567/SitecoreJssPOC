@@ -4,7 +4,6 @@ using Sitecore.Data.Items;
 using Sitecore.LayoutService.Configuration;
 using Sitecore.LayoutService.ItemRendering.ContentsResolvers;
 using Sitecore.Mvc.Presentation;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
@@ -18,7 +17,12 @@ namespace Datamatics.Resolvers
         public NameValueCollection Parameters { get; set; }
         public object ResolveContents(Rendering rendering, IRenderingConfiguration renderingConfig)
         {
-            Item contextItem = Sitecore.Context.Database.GetItem("/sitecore/content/sitecorejsspoc/Content/PageComponents/Header Component");
+            var datasourceId = RenderingContext.CurrentOrNull.Rendering.DataSource;
+
+            if (string.IsNullOrEmpty(datasourceId))
+                return null;
+
+            var contextItem = Sitecore.Context.Database.GetItem(datasourceId);
             if (contextItem != null)
             {
                 HeaderModel headerModel = new HeaderModel();
