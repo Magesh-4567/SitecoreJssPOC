@@ -16,7 +16,7 @@ const OrderDetail = (props) => {
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>MembershipNumber</th>
+                    <th>Membership Number</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>DOB</th>
