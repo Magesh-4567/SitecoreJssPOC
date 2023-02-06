@@ -27,35 +27,42 @@ namespace Datamatics.Resolvers
                 return null;
 
             orderId = HttpUtility.UrlDecode(orderId);
-
-            HttpClient client = new HttpClient
+            try
             {
-                BaseAddress = new Uri("https://my.api.mockaroo.com/")
-            };
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri("https://my.api.mockaroo.com/")
+                };
 
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, "/api/v1/getorderdetails?key=3f001a10");
+                HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, "/api/v1/getorderdetails?key=3f001a10");
 
-            var response = Task.Run(async () => await client.SendAsync(requestMessage));
-            var responseStream = Task.Run(async () => await response.Result.Content.ReadAsStreamAsync());
-            string content = string.Empty;
-            using (StreamReader stream = new StreamReader(responseStream.Result, true))
-            {
-                content = stream.ReadToEnd();
+                var response = Task.Run(async () => await client.SendAsync(requestMessage));
+                var responseStream = Task.Run(async () => await response.Result.Content.ReadAsStreamAsync());
+                string content = string.Empty;
+                using (StreamReader stream = new StreamReader(responseStream.Result, true))
+                {
+                    content = stream.ReadToEnd();
+                }
+
+                List<OrderItem> ordersList = JsonConvert.DeserializeObject<List<OrderItem>>(content);
+
+                if (ordersList != null && ordersList.Any())
+                {
+                    var orderItem = ordersList.Where(x => x.orderId == orderId).FirstOrDefault();
+
+                    return new
+                    {
+                        orderResult = orderItem
+                    };
+                }
             }
 
-            List<OrderItem> ordersList = JsonConvert.DeserializeObject<List<OrderItem>>(content);
-
-            if (ordersList != null && ordersList.Any())
+            catch(Exception ex)
             {
-                var orderItem = ordersList.Where(x => x.orderId == orderId).FirstOrDefault();
 
-                return new
-                {
-                    orderResult = orderItem
-                };
             }
             return null;
         }
