@@ -1,0 +1,18 @@
+query SideMenu($datasource: String!){
+  datasource: item(language: "en",path: $datasource){
+    ... on SideMenu{
+      navigationItems{
+        targetItems{
+          ... on PageTemplate{
+            title{
+              value
+            }
+            url{
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
