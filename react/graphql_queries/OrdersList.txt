@@ -1,0 +1,19 @@
+query OrdersList($datasource: String!){
+  datasource: item(language:"en", path: $datasource){
+    children{
+      results{
+        ... on Order{
+          orderId{
+            value
+          }
+          firstName{
+            value
+          }
+          lastName{
+            value
+          }
+        }
+      }
+    }
+  }
+}
