@@ -31,13 +31,13 @@ namespace Datamatics.Resolvers
             {
                 HttpClient client = new HttpClient
                 {
-                    BaseAddress = new Uri("https://my.api.mockaroo.com/")
+                    BaseAddress = new Uri("https://run.mocky.io/")
                 };
 
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, "/api/v1/getorderdetails?key=3f001a10");
+                HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, "/v3/e60d05d1-3960-44d3-b24a-e71d0e6555e7");
 
                 var response = Task.Run(async () => await client.SendAsync(requestMessage));
                 var responseStream = Task.Run(async () => await response.Result.Content.ReadAsStreamAsync());

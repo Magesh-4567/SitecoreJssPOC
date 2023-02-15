@@ -26,11 +26,11 @@ const OrderDetail = (props) => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{orderItem.customerDetails.membershipNumber}</td>
+                    <td>{orderItem.customerDetails.memberShipNumber}</td>
                     <td>{orderItem.customerDetails.firstName}</td>
                     <td>{orderItem.customerDetails.lastName}</td>
                     <td>{orderItem.customerDetails.dob}</td>
-                    <td>{orderItem.customerDetails.postalCode}</td>
+                    <td>{orderItem.customerDetails.postCode}</td>
                     <td>{orderItem.customerDetails.policyNumber}</td>
                   </tr>
                 </tbody>

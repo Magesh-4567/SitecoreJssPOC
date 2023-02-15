@@ -6,7 +6,7 @@ namespace Datamatics.Models
     {
         public string orderId { get; set; }
         public string dateCreated { get; set; }
-        public Customer cusomterDetails { get; set; }
+        public Customer customerDetails { get; set; }
         public List<Treatment> treatmentDetails { get; set; }
     }
 
